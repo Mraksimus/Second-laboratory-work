@@ -26,9 +26,9 @@ public class Headphones extends ComputerPeriphery {
         int volume
     ) {
         super(peripheryName, brand, peripheryType);
-        this.hasMicrophone = hasMicrophone;
-        this.volume = volume;
-        this.color = color;
+        this.setHasMicrophone(hasMicrophone);
+        this.setVolume(volume);
+        this.setColor(color);
     }
 
     @Override
@@ -54,7 +54,11 @@ public class Headphones extends ComputerPeriphery {
     }
 
     public void setVolume(int volume) {
-        this.volume = volume;
+        if (volume < 0 || volume > 100) {
+            throw new IllegalArgumentException("Volume must be between 0 and 100");
+        } else {
+            this.volume = volume;
+        }
     }
 
     public Color getColor() {
